@@ -1,0 +1,8 @@
+{
+  "jsonrpc": "2.0",
+  "method": "query_digital_twin",
+  "params": {
+    "question": "What are Earl's technical skills?"
+  },
+  "id": 2
+}

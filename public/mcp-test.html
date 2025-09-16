@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MCP Server Test Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        button { background: #0066cc; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0052a6; }
+        .response { background: white; padding: 15px; border-radius: 4px; white-space: pre-wrap; margin-top: 10px; }
+        .loading { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>🤖 Digital Twin MCP Server Test</h1>
+    
+    <div class="container">
+        <h3>Test MCP Methods</h3>
+        <button onclick="testPing()">Test Ping</button>
+        <button onclick="testCapabilities()">Get Capabilities</button>
+        <button onclick="testProfile()">Get Profile Info</button>
+        <button onclick="testSkills()">Get Technical Skills</button>
+        <button onclick="testExperience()">Get Experience</button>
+    </div>
+
+    <div class="container">
+        <h3>Custom Query</h3>
+        <input type="text" id="customQuery" placeholder="Ask about Earl's background..." style="width: 60%; padding: 8px;">
+        <button onclick="testCustomQuery()">Query</button>
+    </div>
+
+    <div id="response" class="response" style="display: none;"></div>
+
+    <script>
+        const serverUrl = 'http://localhost:3000/api/mcp';
+
+        async function makeRequest(method, params = null) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.style.display = 'block';
+            responseDiv.innerHTML = '<div class="loading">Loading...</div>';
+
+            try {
+                const body = {
+                    jsonrpc: '2.0',
+                    method: method,
+                    id: Date.now()
+                };
+
+                if (params) {
+                    body.params = params;
+                }
+
+                const response = await fetch(serverUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await response.json();
+                responseDiv.innerHTML = JSON.stringify(data, null, 2);
+            } catch (error) {
+                responseDiv.innerHTML = `Error: ${error.message}`;
+            }
+        }
+
+        function testPing() {
+            makeRequest('ping');
+        }
+
+        function testCapabilities() {
+            makeRequest('capabilities');
+        }
+
+        function testProfile() {
+            makeRequest('get_profile_info');
+        }
+
+        function testSkills() {
+            makeRequest('get_technical_skills');
+        }
+
+        function testExperience() {
+            makeRequest('search_experience');
+        }
+
+        function testCustomQuery() {
+            const query = document.getElementById('customQuery').value;
+            if (query.trim()) {
+                makeRequest('query_digital_twin', { question: query });
+            }
+        }
+    </script>
+</body>
+</html>
