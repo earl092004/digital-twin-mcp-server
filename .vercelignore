@@ -1,0 +1,27 @@
+# Vercel ignore file
+# This ensures proper deployment configuration
+
+# Development files
+.env.local
+.env.development
+.env.test
+
+# Build artifacts
+.next/
+out/
+build/
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Local development
+.vscode/
+.idea/
+
+# OS generated
+.DS_Store
+Thumbs.db
