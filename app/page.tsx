@@ -506,133 +506,164 @@ export default function Home() {
         <div className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20"></div>
       </button>
 
-      {/* Enhanced Professional Contact Modal */}
+      {/* Professional Contact Modal with Real Icons */}
       {showContact && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-enhanced flex items-center justify-center z-50 p-4 modal-backdrop-enter">
-          <div className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-800 dark:to-gray-900 rounded-3xl max-w-lg w-full mx-4 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700/50 transform modal-enter card-hover">
+          <div className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 rounded-3xl max-w-md w-full mx-4 overflow-hidden shadow-2xl border border-gray-200 dark:border-purple-500/20 transform modal-enter">
             
-            {/* Header with improved design */}
-            <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-8 text-center">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-indigo-600/20 backdrop-blur-sm"></div>
-              <button
-                onClick={() => setShowContact(false)}
-                className="absolute top-4 right-4 text-white/80 hover:text-white hover:bg-white/10 rounded-full p-2 transition-all duration-200 hover:scale-110"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+            {/* Close Button */}
+            <button
+              onClick={() => setShowContact(false)}
+              className="absolute top-6 right-6 z-50 text-gray-400 hover:text-white hover:bg-red-500/20 rounded-full p-2 transition-all duration-300 hover:scale-110 hover:rotate-90"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Professional Header with Profile */}
+            <div className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 p-8 text-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-indigo-700/10 backdrop-blur-sm"></div>
               
               <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🤝</span>
+                {/* Professional Profile Icon */}
+                <div className="w-20 h-20 mx-auto mb-4 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/20 shadow-lg animate-float">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-2 animate-float">Let's Connect!</h3>
-                <p className="text-blue-100/90 text-lg text-shimmer">Ready to discuss opportunities?</p>
-                <div className="mt-4 w-20 h-1 bg-white/30 mx-auto rounded-full"></div>
+                
+                <h3 className="text-3xl font-bold text-white mb-2 tracking-wide">Let's Connect!</h3>
+                <p className="text-blue-100/90 text-base font-medium">Ready to discuss opportunities?</p>
+                <div className="mt-4 w-16 h-1 bg-gradient-to-r from-white/40 to-white/60 mx-auto rounded-full"></div>
               </div>
             </div>
             
-            {/* Body with improved spacing and design */}
-            <div className="p-8">
-              <p className="text-gray-600 dark:text-gray-300 text-center mb-8 text-lg">
-                Choose your preferred way to reach out:
-              </p>
+            {/* Contact Options Body */}
+            <div className="p-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-slate-900">
               
-              {/* Enhanced grid with better styling */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <a
-                  href="https://facebook.com/earl.pacho.5"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-blue-500/30 btn-social btn-hover-glow"
-                  title="Connect on Facebook"
-                >
-                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-3xl mb-3 social-icon">📘</div>
-                    <div className="font-semibold text-sm">Facebook</div>
+              {/* Gmail & Phone Row */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="group relative">
+                  <a
+                    href="mailto:pachoearlsean@gmail.com"
+                    className="block bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white p-5 rounded-2xl transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:shadow-red-500/25 btn-social transform hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <svg className="w-7 h-7 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                      </svg>
+                      <div className="font-semibold text-sm">Gmail</div>
+                    </div>
+                  </a>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                    Contact me
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
                   </div>
-                </a>
+                </div>
                 
-                <a
-                  href="https://instagram.com/earl.pacho"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-purple-500/30 btn-social btn-hover-glow"
-                  title="Follow on Instagram"
-                >
-                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-3xl mb-3 social-icon">📷</div>
-                    <div className="font-semibold text-sm">Instagram</div>
+                <div className="group relative">
+                  <a
+                    href="tel:+639123456789"
+                    className="block bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-5 rounded-2xl transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:shadow-green-500/25 btn-social transform hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <svg className="w-7 h-7 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                      </svg>
+                      <div className="font-semibold text-sm">Phone</div>
+                    </div>
+                  </a>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                    Contact me
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
                   </div>
-                </a>
+                </div>
+              </div>
+
+              {/* Social Media Row */}
+              <div className="grid grid-cols-3 gap-3">
+                <div className="group relative">
+                  <a
+                    href="https://facebook.com/earl.pacho.5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-gradient-to-br from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-4 rounded-2xl transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:shadow-blue-500/25 btn-social transform hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <svg className="w-6 h-6 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      <div className="font-semibold text-xs">Facebook</div>
+                    </div>
+                  </a>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                    Connect with me
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                  </div>
+                </div>
                 
-                <a
-                  href="https://linkedin.com/in/earl-pacho"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative bg-gradient-to-br from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-blue-700/30 btn-social btn-hover-glow"
-                  title="Connect professionally"
-                >
-                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-3xl mb-3 social-icon">💼</div>
-                    <div className="font-semibold text-sm">LinkedIn</div>
+                <div className="group relative">
+                  <a
+                    href="https://github.com/earl092004"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-gradient-to-br from-gray-800 to-gray-900 hover:from-gray-900 hover:to-black text-white p-4 rounded-2xl transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:shadow-gray-700/25 btn-social transform hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <svg className="w-6 h-6 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                      <div className="font-semibold text-xs">GitHub</div>
+                    </div>
+                  </a>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                    My projects
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
                   </div>
-                </a>
+                </div>
                 
-                <a
-                  href="https://github.com/earl092004"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative bg-gradient-to-br from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-gray-700/30 btn-social btn-hover-glow"
-                  title="View my code"
-                >
-                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-3xl mb-3 social-icon">💻</div>
-                    <div className="font-semibold text-sm">GitHub</div>
+                <div className="group relative">
+                  <a
+                    href="https://linkedin.com/in/earl-pacho"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-gradient-to-br from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white p-4 rounded-2xl transition-all duration-300 text-center shadow-lg hover:shadow-xl hover:shadow-blue-700/25 btn-social transform hover:scale-105"
+                  >
+                    <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <svg className="w-6 h-6 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                      <div className="font-semibold text-xs">LinkedIn</div>
+                    </div>
+                  </a>
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                    Connect with me
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
                   </div>
-                </a>
-                
-                <a
-                  href="mailto:pachoearlsean@gmail.com"
-                  className="group relative bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-red-500/30 btn-social btn-hover-glow"
-                  title="Send me an email"
-                >
-                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-3xl mb-3 social-icon">✉️</div>
-                    <div className="font-semibold text-sm">Email</div>
-                  </div>
-                </a>
-                
-                <a
-                  href="tel:+639123456789"
-                  className="group relative bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-green-500/30 btn-social btn-hover-glow"
-                  title="Call me"
-                >
-                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10">
-                    <div className="text-3xl mb-3 social-icon">📞</div>
-                    <div className="font-semibold text-sm">Phone</div>
-                  </div>
-                </a>
+                </div>
               </div>
               
-              {/* Enhanced footer section */}
-              <div className="relative bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6 text-center border border-gray-200 dark:border-gray-600/50">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="text-2xl mb-3">💡</div>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                    <span className="text-blue-600 dark:text-blue-400 font-semibold">Looking for opportunities!</span>
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                    Open to internships, entry-level positions, and collaborations
-                  </p>
+              {/* Professional Footer */}
+              <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700/50 text-center">
+                <div className="relative bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-5 border border-blue-100 dark:border-blue-800/30">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-center mb-3">
+                      <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                      <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm">Open to Opportunities</span>
+                    </div>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      Available for internships, entry-level positions, and collaborations
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
