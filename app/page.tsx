@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [showChat, setShowChat] = useState(false)
+  const [showContact, setShowContact] = useState(false)
   const [chatMessage, setChatMessage] = useState('')
   const [chatHistory, setChatHistory] = useState<Array<{role: 'user' | 'assistant', content: string}>>([
     {
@@ -99,10 +100,10 @@ export default function Home() {
                 Projects
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
+              <button onClick={() => setShowContact(true)} className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 Contact
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-              </a>
+              </button>
             </div>
             <div className="flex items-center space-x-4">
               <button
@@ -474,6 +475,117 @@ export default function Home() {
               <p className="text-xs text-gray-500 mt-3 text-center">
                 🤖 Powered by AI • Information based on professional profile
               </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Contact Button */}
+      <button
+        onClick={() => setShowContact(true)}
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-50 group"
+        title="Contact Me"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center animate-pulse">
+          💬
+        </span>
+      </button>
+
+      {/* Professional Contact Modal */}
+      {showContact && (
+        <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl max-w-md w-full mx-4 overflow-hidden shadow-2xl border border-purple-500/20">
+            <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center">
+              <button
+                onClick={() => setShowContact(false)}
+                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <h3 className="text-2xl font-bold text-white mb-2">🤝 Let's Connect!</h3>
+              <p className="text-blue-100">Ready to discuss opportunities?</p>
+            </div>
+            
+            <div className="p-6 space-y-4">
+              <p className="text-gray-300 text-center mb-6">
+                Choose your preferred way to reach out:
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <a
+                  href="https://facebook.com/earl.pacho.5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+                  title="Connect on Facebook"
+                >
+                  <div className="text-2xl mb-2">📘</div>
+                  <div className="font-medium">Facebook</div>
+                </a>
+                
+                <a
+                  href="https://instagram.com/earl.pacho"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+                  title="Follow on Instagram"
+                >
+                  <div className="text-2xl mb-2">📷</div>
+                  <div className="font-medium">Instagram</div>
+                </a>
+                
+                <a
+                  href="https://linkedin.com/in/earl-pacho"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-blue-700 hover:bg-blue-800 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+                  title="Connect professionally"
+                >
+                  <div className="text-2xl mb-2">💼</div>
+                  <div className="font-medium">LinkedIn</div>
+                </a>
+                
+                <a
+                  href="https://github.com/earl092004"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-gray-800 hover:bg-gray-900 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-gray-500/25 transform hover:scale-105"
+                  title="View my code"
+                >
+                  <div className="text-2xl mb-2">💻</div>
+                  <div className="font-medium">GitHub</div>
+                </a>
+                
+                <a
+                  href="mailto:pachoearlsean@gmail.com"
+                  className="group bg-red-600 hover:bg-red-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-red-500/25 transform hover:scale-105"
+                  title="Send me an email"
+                >
+                  <div className="text-2xl mb-2">✉️</div>
+                  <div className="font-medium">Email</div>
+                </a>
+                
+                <a
+                  href="tel:+639123456789"
+                  className="group bg-green-600 hover:bg-green-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-green-500/25 transform hover:scale-105"
+                  title="Call me"
+                >
+                  <div className="text-2xl mb-2">📞</div>
+                  <div className="font-medium">Phone</div>
+                </a>
+              </div>
+              
+              <div className="mt-6 p-4 bg-slate-800 rounded-xl text-center">
+                <p className="text-sm text-gray-400">
+                  💡 <strong className="text-white">Looking for opportunities!</strong><br/>
+                  Open to internships, entry-level positions, and collaborations
+                </p>
+              </div>
             </div>
           </div>
         </div>
