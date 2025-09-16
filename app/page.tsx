@@ -508,7 +508,7 @@ export default function Home() {
                 </svg>
               </button>
               <h3 className="text-2xl font-bold text-white mb-2">🤝 Let's Connect!</h3>
-              <p className="text-blue-100">Ready to discuss opportunities?</p>
+              <p className="text-blue-100">Ready to discuss opportunities? Let's get in touch!</p>
             </div>
             
             <div className="p-6 space-y-4">
