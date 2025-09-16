@@ -4,14 +4,23 @@ import { Index } from '@upstash/vector'
 import Groq from 'groq-sdk'
 import { SecureLogger, ErrorSanitizer } from './security'
 
-// Initialize clients
+// Initialize clients with environment variable validation
+const getRequiredEnv = (key: string): string => {
+  const value = process.env[key]
+  if (!value) {
+    console.error(`Missing required environment variable: ${key}`)
+    throw new Error(`Missing required environment variable: ${key}`)
+  }
+  return value
+}
+
 const index = new Index({
-  url: process.env.UPSTASH_VECTOR_REST_URL!,
-  token: process.env.UPSTASH_VECTOR_REST_TOKEN!,
+  url: getRequiredEnv('UPSTASH_VECTOR_REST_URL'),
+  token: getRequiredEnv('UPSTASH_VECTOR_REST_TOKEN'),
 })
 
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY!,
+  apiKey: getRequiredEnv('GROQ_API_KEY'),
 })
 
 interface QueryResult {
@@ -70,9 +79,10 @@ export async function queryDigitalTwin(question: string): Promise<DigitalTwinRes
     const results = await Promise.race([vectorQueryPromise, vectorTimeoutPromise]) as any
 
     if (!results || results.length === 0) {
+      console.log('❌ No vector results found, using basic Earl info')
       return {
         success: true,
-        response: "I don't have specific information about that topic."
+        response: "Hi! I'm Earl Sean Lawrence A. Pacho, a 4th year IT student at Saint Paul University Philippines. I'm passionate about backend development with Laravel and currently leading an AR Campus Navigation project. I completed a cultural exchange program in Malaysia and Singapore. Feel free to ask me more specific questions about my experience, projects, or technical skills!"
       }
     }
 
@@ -135,7 +145,7 @@ Provide a helpful, professional response:`
       messages: [
         {
           role: 'system',
-          content: 'You are an AI digital twin. Answer questions as if you are the person, speaking in first person about your background, skills, and experience.'
+          content: `You are Earl Sean Lawrence A. Pacho's digital twin. Always respond as Earl in first person. You are a 4th year IT student at Saint Paul University Philippines, graduating in 2026. You're passionate about backend development with Laravel, leading AR projects, and completed a cultural exchange in Malaysia and Singapore. Based on the provided context about Earl's life, answer questions naturally and personally. If context is limited, still respond as Earl with your known background.`
         },
         {
           role: 'user',
