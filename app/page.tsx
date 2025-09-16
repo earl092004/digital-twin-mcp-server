@@ -480,111 +480,160 @@ export default function Home() {
         </div>
       )}
 
-      {/* Floating Contact Button */}
+      {/* Enhanced Floating Contact Button */}
       <button
         onClick={() => setShowContact(true)}
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white p-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-50 group"
-        title="Contact Me"
+        className="fixed bottom-8 right-8 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white p-5 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-110 transition-all duration-300 z-50 group animate-bounce floating-btn btn-hover-glow"
+        title="Contact Me - Let's Connect!"
+        style={{
+          animation: 'bounce 2s infinite, pulse 2s infinite'
+        }}
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-        </svg>
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center animate-pulse">
-          💬
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-400 to-indigo-400 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div className="relative z-10 flex items-center justify-center">
+          <svg className="w-7 h-7 transform group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </div>
+        
+        {/* Notification badge */}
+        <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full w-7 h-7 flex items-center justify-center notification-badge border-2 border-white shadow-lg">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span className="relative animate-bounce">💬</span>
         </span>
+        
+        {/* Ripple effect */}
+        <div className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-20"></div>
       </button>
 
-      {/* Professional Contact Modal */}
+      {/* Enhanced Professional Contact Modal */}
       {showContact && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl max-w-md w-full mx-4 overflow-hidden shadow-2xl border border-purple-500/20">
-            <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-center">
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-enhanced flex items-center justify-center z-50 p-4 modal-backdrop-enter">
+          <div className="bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:via-slate-800 dark:to-gray-900 rounded-3xl max-w-lg w-full mx-4 overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700/50 transform modal-enter card-hover">
+            
+            {/* Header with improved design */}
+            <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 p-8 text-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-indigo-600/20 backdrop-blur-sm"></div>
               <button
                 onClick={() => setShowContact(false)}
-                className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+                className="absolute top-4 right-4 text-white/80 hover:text-white hover:bg-white/10 rounded-full p-2 transition-all duration-200 hover:scale-110"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
-              <h3 className="text-2xl font-bold text-white mb-2">🤝 Let's Connect!</h3>
-              <p className="text-blue-100">Ready to discuss opportunities? Let's get in touch!</p>
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🤝</span>
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2 animate-float">Let's Connect!</h3>
+                <p className="text-blue-100/90 text-lg text-shimmer">Ready to discuss opportunities?</p>
+                <div className="mt-4 w-20 h-1 bg-white/30 mx-auto rounded-full"></div>
+              </div>
             </div>
             
-            <div className="p-6 space-y-4">
-              <p className="text-gray-300 text-center mb-6">
+            {/* Body with improved spacing and design */}
+            <div className="p-8">
+              <p className="text-gray-600 dark:text-gray-300 text-center mb-8 text-lg">
                 Choose your preferred way to reach out:
               </p>
               
-              <div className="grid grid-cols-2 gap-4">
+              {/* Enhanced grid with better styling */}
+              <div className="grid grid-cols-2 gap-4 mb-8">
                 <a
                   href="https://facebook.com/earl.pacho.5"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-blue-500/30 btn-social btn-hover-glow"
                   title="Connect on Facebook"
                 >
-                  <div className="text-2xl mb-2">📘</div>
-                  <div className="font-medium">Facebook</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-3xl mb-3 social-icon">📘</div>
+                    <div className="font-semibold text-sm">Facebook</div>
+                  </div>
                 </a>
                 
                 <a
                   href="https://instagram.com/earl.pacho"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-purple-500/30 btn-social btn-hover-glow"
                   title="Follow on Instagram"
                 >
-                  <div className="text-2xl mb-2">📷</div>
-                  <div className="font-medium">Instagram</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-3xl mb-3 social-icon">📷</div>
+                    <div className="font-semibold text-sm">Instagram</div>
+                  </div>
                 </a>
                 
                 <a
                   href="https://linkedin.com/in/earl-pacho"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-blue-700 hover:bg-blue-800 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-blue-700/30 btn-social btn-hover-glow"
                   title="Connect professionally"
                 >
-                  <div className="text-2xl mb-2">💼</div>
-                  <div className="font-medium">LinkedIn</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-3xl mb-3 social-icon">💼</div>
+                    <div className="font-semibold text-sm">LinkedIn</div>
+                  </div>
                 </a>
                 
                 <a
                   href="https://github.com/earl092004"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-gray-800 hover:bg-gray-900 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-gray-500/25 transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-gray-700/30 btn-social btn-hover-glow"
                   title="View my code"
                 >
-                  <div className="text-2xl mb-2">💻</div>
-                  <div className="font-medium">GitHub</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-3xl mb-3 social-icon">💻</div>
+                    <div className="font-semibold text-sm">GitHub</div>
+                  </div>
                 </a>
                 
                 <a
                   href="mailto:pachoearlsean@gmail.com"
-                  className="group bg-red-600 hover:bg-red-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-red-500/25 transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-red-500/30 btn-social btn-hover-glow"
                   title="Send me an email"
                 >
-                  <div className="text-2xl mb-2">✉️</div>
-                  <div className="font-medium">Email</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-3xl mb-3 social-icon">✉️</div>
+                    <div className="font-semibold text-sm">Email</div>
+                  </div>
                 </a>
                 
                 <a
                   href="tel:+639123456789"
-                  className="group bg-green-600 hover:bg-green-700 text-white p-4 rounded-xl transition-all duration-300 text-center hover:shadow-lg hover:shadow-green-500/25 transform hover:scale-105"
+                  className="group relative bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-6 rounded-2xl transition-all duration-300 text-center hover:shadow-xl hover:shadow-green-500/30 btn-social btn-hover-glow"
                   title="Call me"
                 >
-                  <div className="text-2xl mb-2">📞</div>
-                  <div className="font-medium">Phone</div>
+                  <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="text-3xl mb-3 social-icon">📞</div>
+                    <div className="font-semibold text-sm">Phone</div>
+                  </div>
                 </a>
               </div>
               
-              <div className="mt-6 p-4 bg-slate-800 rounded-xl text-center">
-                <p className="text-sm text-gray-400">
-                  💡 <strong className="text-white">Looking for opportunities!</strong><br/>
-                  Open to internships, entry-level positions, and collaborations
-                </p>
+              {/* Enhanced footer section */}
+              <div className="relative bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-700/50 rounded-2xl p-6 text-center border border-gray-200 dark:border-gray-600/50">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl"></div>
+                <div className="relative z-10">
+                  <div className="text-2xl mb-3">💡</div>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                    <span className="text-blue-600 dark:text-blue-400 font-semibold">Looking for opportunities!</span>
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                    Open to internships, entry-level positions, and collaborations
+                  </p>
+                </div>
               </div>
             </div>
           </div>
