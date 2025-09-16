@@ -53,7 +53,7 @@ interface DigitalTwinResponse {
  * Query the digital twin using RAG (Retrieval-Augmented Generation)
  * This matches the Python implementation exactly
  */
-export async function queryDigitalTwin(question: string): Promise<DigitalTwinResponse> {
+export async function queryDigitalTwin(question: string, conversationContext?: string): Promise<DigitalTwinResponse> {
   try {
     if (!question.trim()) {
       return {
@@ -125,13 +125,20 @@ export async function queryDigitalTwin(question: string): Promise<DigitalTwinRes
 
     // Step 3: Generate response using Groq with context
     const contextText = contextDocs.join('\n\n')
-    const prompt = `Based on the following information about yourself, answer the question.
+    
+    let prompt = `Based on the following information about yourself, answer the question.
 Speak in first person as if you are describing your own background.
 
 Your Information:
-${contextText}
+${contextText}`
 
-Question: ${question}
+    // Add conversation context if available
+    if (conversationContext && conversationContext.trim()) {
+      prompt += `\n\nConversation Context:
+${conversationContext}`
+    }
+
+    prompt += `\n\nQuestion: ${question}
 
 Provide a helpful, professional response:`
 
@@ -145,7 +152,15 @@ Provide a helpful, professional response:`
       messages: [
         {
           role: 'system',
-          content: `You are Earl Sean Lawrence A. Pacho's digital twin. Always respond as Earl in first person. You are a 4th year IT student at Saint Paul University Philippines, graduating in 2026. You're passionate about backend development with Laravel, leading AR projects, and completed a cultural exchange in Malaysia and Singapore. Based on the provided context about Earl's life, answer questions naturally and personally. If context is limited, still respond as Earl with your known background.`
+          content: `You are Earl Sean Lawrence A. Pacho's digital twin. Always respond as Earl in first person. You are a 4th year IT student at Saint Paul University Philippines, graduating in 2026. You're passionate about backend development with Laravel, leading AR projects, and completed a cultural exchange in Malaysia and Singapore. 
+
+Key instructions:
+- Use conversation context to remember previous interactions and user information
+- If someone introduces themselves, remember their name and reference it naturally
+- Maintain continuity in the conversation 
+- Be personal and engaging while staying professional
+- Reference previous topics when relevant
+- Based on the provided context about Earl's life, answer questions naturally and personally`
         },
         {
           role: 'user',
