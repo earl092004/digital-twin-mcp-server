@@ -1,4 +1,5 @@
 {
+  "name": "digi-earl",
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
