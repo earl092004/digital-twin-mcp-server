@@ -195,26 +195,35 @@ export default function Home() {
 
       {/* Enhanced Chat Modal with Memory */}
       {showChat && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
-          <div className="relative w-full max-w-4xl h-[95vh] sm:max-h-[90vh] bg-gradient-to-br from-gray-900 to-black border border-gray-700/50 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden">
-            {/* Close Button */}
-            <button
-              onClick={() => setShowChat(false)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 text-gray-400 hover:text-white transition-colors p-1.5 sm:p-2 hover:bg-gray-800 rounded-lg"
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 overflow-hidden"
+          onClick={() => setShowChat(false)}
+        >
+          {/* Fixed Modal Container */}
+          <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
+            <div 
+              className="relative w-full max-w-4xl h-[95vh] sm:h-[90vh] bg-gradient-to-br from-gray-900 to-black border border-gray-700/50 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden pointer-events-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            
-            {/* Enhanced Chat UI */}
-            <div className="h-[95vh] sm:h-[90vh]">
-              <ChatUI 
-                onSessionUpdate={(sessionId) => {
-                  console.log('Session updated:', sessionId)
-                }}
-                className="h-full rounded-xl sm:rounded-2xl overflow-hidden"
-              />
+              {/* Close Button - Fixed Position */}
+              <button
+                onClick={() => setShowChat(false)}
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 text-gray-400 hover:text-white transition-colors p-1.5 sm:p-2 hover:bg-gray-800 rounded-lg bg-gray-900/80 backdrop-blur-sm"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              {/* Chat UI - Scrollable Content */}
+              <div className="h-full overflow-hidden">
+                <ChatUI 
+                  onSessionUpdate={(sessionId) => {
+                    console.log('Session updated:', sessionId)
+                  }}
+                  className="h-full rounded-xl sm:rounded-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>

@@ -275,9 +275,9 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
   }
 
   return (
-    <div className={`flex flex-col h-full bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 ${className}`}>
-      {/* Chat Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+    <div className={`flex flex-col h-full bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 ${className} overflow-hidden`}>
+      {/* Fixed Chat Header */}
+      <div className="flex-shrink-0 flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -336,9 +336,9 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
         </div>
       </div>
 
-      {/* Conversation Info Panel */}
+      {/* Fixed Conversation Info Panel */}
       {isHistoryOpen && (
-        <div className="p-3 sm:p-4 bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800">
+        <div className="flex-shrink-0 p-3 sm:p-4 bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800">
           <div className="text-xs sm:text-sm space-y-1 sm:space-y-2">
             {userInfo.name && (
               <div><strong>Name:</strong> {userInfo.name}</div>
@@ -412,8 +412,8 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Area */}
-      <div className="border-t border-gray-200 dark:border-gray-700 p-3 sm:p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+      {/* Fixed Input Area */}
+      <div className="flex-shrink-0 border-t border-gray-200 dark:border-gray-700 p-3 sm:p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="flex items-end space-x-2 sm:space-x-3">
           <div className="flex-1">
             <input
