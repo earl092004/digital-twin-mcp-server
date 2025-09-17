@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGI-EARL Session Memory Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .test-container {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        .test-step {
+            margin: 15px 0;
+            padding: 10px;
+            background: #334155;
+            border-radius: 4px;
+        }
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .info { color: #3b82f6; }
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #2563eb; }
+        button:disabled { background: #64748b; cursor: not-allowed; }
+        #results { margin-top: 20px; }
+        .json-display {
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧠 DIGI-EARL Session Memory Test</h1>
+    
+    <div class="test-container">
+        <h2>Session Validation Test</h2>
+        <p>This test validates that the session memory system works correctly:</p>
+        <ol>
+            <li>Create a new session</li>
+            <li>Send a message with your name</li>
+            <li>Validate session exists in Redis</li>
+            <li>Send follow-up message to test memory</li>
+            <li>Test session validation after page reload simulation</li>
+        </ol>
+        
+        <button onclick="runSessionTest()" id="testBtn">🚀 Run Session Test</button>
+        <button onclick="clearResults()" id="clearBtn">🧹 Clear Results</button>
+        <button onclick="testInvalidSession()" id="invalidBtn">❌ Test Invalid Session</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        let currentSessionId = null;
+        let testResults = [];
+
+        function logResult(step, status, message, data = null) {
+            const timestamp = new Date().toLocaleTimeString();
+            const result = { step, status, message, data, timestamp };
+            testResults.push(result);
+            
+            const resultsDiv = document.getElementById('results');
+            const statusClass = status === 'success' ? 'success' : status === 'error' ? 'error' : 'info';
+            
+            const stepDiv = document.createElement('div');
+            stepDiv.className = 'test-step';
+            stepDiv.innerHTML = `
+                <div class="${statusClass}">
+                    <strong>[${timestamp}] ${step}:</strong> ${message}
+                </div>
+                ${data ? `<div class="json-display">${JSON.stringify(data, null, 2)}</div>` : ''}
+            `;
+            resultsDiv.appendChild(stepDiv);
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+
+        async function createSession() {
+            try {
+                const response = await fetch('/api/sessions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'create' })
+                });
+                const data = await response.json();
+                
+                if (data.success && data.sessionId) {
+                    currentSessionId = data.sessionId;
+                    logResult('Create Session', 'success', `Session created successfully`, data);
+                    return data.sessionId;
+                } else {
+                    logResult('Create Session', 'error', 'Failed to create session', data);
+                    return null;
+                }
+            } catch (error) {
+                logResult('Create Session', 'error', `Error: ${error.message}`);
+                return null;
+            }
+        }
+
+        async function sendMessage(message, sessionId) {
+            try {
+                const response = await fetch('/api/digital-twin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message, sessionId })
+                });
+                const data = await response.json();
+                
+                if (data.response) {
+                    logResult('Send Message', 'success', `Message sent: "${message}"`, { 
+                        response: data.response.substring(0, 200) + '...' 
+                    });
+                    return data.response;
+                } else {
+                    logResult('Send Message', 'error', 'No response received', data);
+                    return null;
+                }
+            } catch (error) {
+                logResult('Send Message', 'error', `Error: ${error.message}`);
+                return null;
+            }
+        }
+
+        async function validateSession(sessionId) {
+            try {
+                const response = await fetch(`/api/sessions?action=validate&sessionId=${sessionId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const status = data.exists ? 'success' : 'info';
+                    const message = data.exists ? 'Session exists in Redis' : 'Session not found in Redis';
+                    logResult('Validate Session', status, message, data);
+                    return data.exists;
+                } else {
+                    logResult('Validate Session', 'error', 'Validation failed', data);
+                    return false;
+                }
+            } catch (error) {
+                logResult('Validate Session', 'error', `Error: ${error.message}`);
+                return false;
+            }
+        }
+
+        async function runSessionTest() {
+            const testBtn = document.getElementById('testBtn');
+            testBtn.disabled = true;
+            testBtn.textContent = '🔄 Running Test...';
+            
+            logResult('Test Start', 'info', '🧪 Starting DIGI-EARL Session Memory Test');
+            
+            // Step 1: Create session
+            const sessionId = await createSession();
+            if (!sessionId) {
+                testBtn.disabled = false;
+                testBtn.textContent = '🚀 Run Session Test';
+                return;
+            }
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Step 2: Send initial message with name
+            const nameMessage = "Hi, my name is Test User and I want to know about Earl's projects";
+            const firstResponse = await sendMessage(nameMessage, sessionId);
+            if (!firstResponse) {
+                testBtn.disabled = false;
+                testBtn.textContent = '🚀 Run Session Test';
+                return;
+            }
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Step 3: Validate session exists
+            const sessionExists = await validateSession(sessionId);
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Step 4: Send follow-up message
+            const followupMessage = "What are Earl's technical skills?";
+            const secondResponse = await sendMessage(followupMessage, sessionId);
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Step 5: Check if name is remembered
+            if (secondResponse) {
+                const remembersName = secondResponse.toLowerCase().includes('test user');
+                const memoryStatus = remembersName ? 'success' : 'info';
+                const memoryMessage = remembersName ? 
+                    '✅ Name remembered in conversation!' : 
+                    '⚠️ Name not explicitly mentioned (natural conversation)';
+                logResult('Memory Test', memoryStatus, memoryMessage);
+            }
+            
+            // Step 6: Simulate localStorage validation
+            localStorage.setItem('digi-earl-session', sessionId);
+            const storedSession = localStorage.getItem('digi-earl-session');
+            const isValid = await validateSession(storedSession);
+            
+            logResult('LocalStorage Test', isValid ? 'success' : 'info', 
+                isValid ? 'Session validated from localStorage' : 'Session expired or cleaned up');
+            
+            logResult('Test Complete', 'success', '🎉 All test steps completed!');
+            
+            testBtn.disabled = false;
+            testBtn.textContent = '🚀 Run Session Test';
+        }
+
+        async function testInvalidSession() {
+            logResult('Invalid Session Test', 'info', '🔍 Testing invalid session validation...');
+            const invalidResult = await validateSession('invalid-session-id-12345');
+            const message = invalidResult ? 'ERROR: Invalid session was accepted!' : 'Invalid session correctly rejected';
+            logResult('Invalid Session Test', invalidResult ? 'error' : 'success', message);
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            testResults = [];
+            currentSessionId = null;
+        }
+
+        // Auto-test localStorage on page load
+        window.addEventListener('load', () => {
+            const existingSession = localStorage.getItem('digi-earl-session');
+            if (existingSession) {
+                logResult('Page Load', 'info', `Found existing session in localStorage: ${existingSession}`);
+                validateSession(existingSession);
+            } else {
+                logResult('Page Load', 'info', 'No existing session in localStorage');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -87,19 +87,12 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({ 
-    message: 'Digital Twin MCP Server API - Enhanced Memory Version',
-    version: '2.0.0',
+    message: 'Digital Twin MCP Server API',
+    version: '1.0.0',
     endpoints: {
-      'POST /api/digital-twin': 'Query the digital twin with enhanced memory',
+      'POST /api/digital-twin': 'Query the digital twin',
       'GET /api/digital-twin/info': 'Get database information',
       'GET /api/digital-twin/test': 'Test connections'
-    },
-    features: [
-      'Redis-based session persistence',
-      'Enhanced user information extraction',
-      'Global conversation awareness',
-      'Cross-session memory references',
-      'Automatic conversation summarization'
-    ]
+    }
   })
 }

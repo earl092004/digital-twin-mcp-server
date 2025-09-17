@@ -2,9 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import { 
   getSessionStats, 
   getSessionDetails, 
-  cleanupOldSessions,
-  getOrCreateSession 
-} from '../../lib/memory'
+  cleanupExpiredSessions,
+  getOrCreateSession,
+  deleteSession,
+  generateConversationSummary
+} from '../../lib/enhanced-memory'
 
 export async function GET(request: NextRequest) {
   try {
@@ -34,10 +36,36 @@ export async function GET(request: NextRequest) {
         })
 
       case 'cleanup':
-        const cleanedCount = await cleanupOldSessions(24)
+        const cleanedCount = await cleanupExpiredSessions()
         return NextResponse.json({
           success: true,
-          message: `Cleaned up ${cleanedCount} old sessions`
+          message: `Cleaned up ${cleanedCount} expired sessions`
+        })
+
+      case 'delete':
+        if (!sessionId) {
+          return NextResponse.json(
+            { success: false, error: 'Session ID required for deletion' },
+            { status: 400 }
+          )
+        }
+        const deleted = await deleteSession(sessionId)
+        return NextResponse.json({
+          success: deleted,
+          message: deleted ? 'Session deleted' : 'Session not found'
+        })
+
+      case 'summary':
+        if (!sessionId) {
+          return NextResponse.json(
+            { success: false, error: 'Session ID required for summary' },
+            { status: 400 }
+          )
+        }
+        const summary = await generateConversationSummary(sessionId)
+        return NextResponse.json({
+          success: true,
+          summary
         })
 
       case 'create':
@@ -45,6 +73,20 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({
           success: true,
           sessionId: newSessionId
+        })
+
+      case 'validate':
+        if (!sessionId) {
+          return NextResponse.json(
+            { success: false, error: 'Session ID required for validation' },
+            { status: 400 }
+          )
+        }
+        const session = await getSessionDetails(sessionId)
+        return NextResponse.json({
+          success: true,
+          exists: !!session,
+          sessionId
         })
 
       default:
