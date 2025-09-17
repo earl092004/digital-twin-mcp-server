@@ -299,13 +299,13 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
           </div>
         </div>
         
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1 sm:space-x-2">
           <button
             onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="p-1.5 sm:p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
             title="Toggle conversation info"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </button>
@@ -314,20 +314,20 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
             <>
               <button
                 onClick={exportConversation}
-                className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="p-1.5 sm:p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors hidden sm:block"
                 title="Export conversation"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </button>
               
               <button
                 onClick={clearConversation}
-                className="p-2 text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                className="p-1.5 sm:p-2 text-white/70 hover:text-red-400 rounded-lg hover:bg-white/10 transition-colors"
                 title="Clear conversation"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
               </button>
@@ -338,8 +338,8 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
 
       {/* Conversation Info Panel */}
       {isHistoryOpen && (
-        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800">
-          <div className="text-sm space-y-2">
+        <div className="p-3 sm:p-4 bg-blue-50 dark:bg-blue-900/20 border-b border-blue-200 dark:border-blue-800">
+          <div className="text-xs sm:text-sm space-y-1 sm:space-y-2">
             {userInfo.name && (
               <div><strong>Name:</strong> {userInfo.name}</div>
             )}
@@ -365,18 +365,18 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
       )}
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
         {messages.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <div className="text-center py-8 sm:py-12 px-4">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">
               Start a conversation with DIGI-EARL
             </h3>
-            <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 max-w-md mx-auto">
               Ask me about Earl's background, projects, skills, or anything else you'd like to know!
             </p>
           </div>
@@ -387,7 +387,7 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
               className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2.5 sm:py-3 ${
                   message.role === 'user'
                     ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white'
                     : message.isLoading
@@ -395,7 +395,7 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
                     : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700'
                 }`}
               >
-                <div className="text-sm leading-relaxed whitespace-pre-wrap">
+                <div className="text-sm sm:text-sm leading-relaxed whitespace-pre-wrap">
                   {message.content}
                 </div>
                 <div
@@ -413,8 +413,8 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-gray-200 dark:border-gray-700 p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-        <div className="flex items-end space-x-3">
+      <div className="border-t border-gray-200 dark:border-gray-700 p-3 sm:p-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+        <div className="flex items-end space-x-2 sm:space-x-3">
           <div className="flex-1">
             <input
               ref={inputRef}
@@ -424,20 +424,20 @@ export default function ChatUI({ sessionId, onSessionUpdate, className = '' }: C
               onKeyPress={handleKeyPress}
               placeholder="Ask DIGI-EARL anything about Earl's journey..."
               disabled={isLoading}
-              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-colors"
+              className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-colors text-sm sm:text-base"
             />
           </div>
           <button
             onClick={sendMessage}
             disabled={!inputValue.trim() || isLoading}
-            className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 disabled:hover:scale-100"
+            className="p-2.5 sm:p-3 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 disabled:hover:scale-100"
           >
             {isLoading ? (
-              <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
             ) : (
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
               </svg>
             )}

@@ -33,22 +33,23 @@ export default function Home() {
 
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
-            <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
+            <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
               DIGI-EARL
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center">
               <button
                 onClick={() => setShowChat(true)}
-                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 py-3 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-purple-500/25 hover:scale-105"
+                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-3 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-purple-500/25 hover:scale-105 text-sm sm:text-base"
               >
-                <svg className="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
-                <span className="font-medium">Chat with DIGI-EARL</span>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full"></div>
+                <span className="font-medium hidden xs:inline">Chat with DIGI-EARL</span>
+                <span className="font-medium xs:hidden">Chat</span>
+                <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-ping"></div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full"></div>
               </button>
             </div>
           </div>
@@ -56,57 +57,57 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center pt-20">
-        <div className="container mx-auto px-6">
+      <div className="relative min-h-screen flex items-center justify-center pt-16 sm:pt-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto text-center relative">
             {/* Glowing orb behind text */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full blur-3xl animate-pulse"></div>
             
             <div className="relative z-10">
-              <div className="mb-8">
-                <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full text-sm font-medium text-purple-300 border border-purple-500/20 backdrop-blur-sm">
+              <div className="mb-6 sm:mb-8">
+                <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full text-xs sm:text-sm font-medium text-purple-300 border border-purple-500/20 backdrop-blur-sm">
                   🤖 Enhanced Memory System Active
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 leading-tight px-2">
                 Hi, I'm{' '}
                 <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
                   DIGI-EARL
                 </span>
               </h1>
               
-              <div className="text-2xl md:text-4xl font-light mb-8 text-gray-300">
+              <div className="text-lg xs:text-xl sm:text-2xl md:text-4xl font-light mb-6 sm:mb-8 text-gray-300 px-2">
                 <span className="bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
                   AI Digital Twin with Enhanced Memory
                 </span>
               </div>
               
-              <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4">
                 <span className="text-cyan-400 font-medium">Persistent Memory</span> • 
                 <span className="text-purple-400 font-medium"> Global Awareness</span> • 
                 <span className="text-pink-400 font-medium"> Fresh UI Experience</span>
-                <br className="hidden md:block"/>
+                <br className="hidden sm:block"/>
                 Powered by Redis session storage, advanced user extraction, and cross-conversation memory. 
                 Experience fresh conversations with continuous context awareness.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-4">
                 <button 
                   onClick={() => setShowChat(true)}
-                  className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-purple-500/25 hover:scale-105 transform"
+                  className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-purple-500/25 hover:scale-105 transform w-full sm:w-auto"
                 >
                   <span className="relative z-10">Start Conversation</span>
-                  <svg className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </button>
                 
                 <button 
                   onClick={() => setShowContact(true)}
-                  className="group px-8 py-4 rounded-full text-lg font-semibold border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  className="group px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold border-2 border-gray-600 hover:border-purple-400 text-gray-300 hover:text-white transition-all duration-300 hover:scale-105 backdrop-blur-sm w-full sm:w-auto"
                 >
-                  <svg className="inline-block mr-2 w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="inline-block mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Learn More
@@ -118,14 +119,14 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="relative py-32 bg-gradient-to-b from-black to-gray-900/50">
-        <div className="container mx-auto px-6">
+      <div className="relative py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-black to-gray-900/50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full text-sm font-medium text-purple-300 border border-purple-500/20 backdrop-blur-sm mb-6">
+            <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+              <span className="inline-block px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full text-xs sm:text-sm font-medium text-purple-300 border border-purple-500/20 backdrop-blur-sm mb-4 sm:mb-6">
                 🧠 Memory Features
               </span>
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 px-2">
                 Enhanced{' '}
                 <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                   Intelligence
@@ -133,7 +134,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
               <div className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                 <div className="relative bg-black/50 backdrop-blur-sm border border-gray-800 hover:border-purple-500/50 rounded-2xl p-8 transition-all duration-300 hover:transform hover:scale-105">
@@ -194,25 +195,25 @@ export default function Home() {
 
       {/* Enhanced Chat Modal with Memory */}
       {showChat && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative w-full max-w-4xl max-h-[90vh] bg-gradient-to-br from-gray-900 to-black border border-gray-700/50 rounded-2xl shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
+          <div className="relative w-full max-w-4xl h-[95vh] sm:max-h-[90vh] bg-gradient-to-br from-gray-900 to-black border border-gray-700/50 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden">
             {/* Close Button */}
             <button
               onClick={() => setShowChat(false)}
-              className="absolute top-4 right-4 z-10 text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 text-gray-400 hover:text-white transition-colors p-1.5 sm:p-2 hover:bg-gray-800 rounded-lg"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
             
             {/* Enhanced Chat UI */}
-            <div className="h-[90vh]">
+            <div className="h-[95vh] sm:h-[90vh]">
               <ChatUI 
                 onSessionUpdate={(sessionId) => {
                   console.log('Session updated:', sessionId)
                 }}
-                className="h-full rounded-2xl overflow-hidden"
+                className="h-full rounded-xl sm:rounded-2xl overflow-hidden"
               />
             </div>
           </div>
