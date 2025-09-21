@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Initialize OpenAI client only when needed to avoid build-time errors
+function getOpenAIClient() {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error('OpenAI API key not configured')
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,15 +23,9 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'No audio file provided' }, { status: 400 })
       }
 
-      // Check if we have OpenAI API available
-      if (!process.env.OPENAI_API_KEY) {
-        return NextResponse.json({ 
-          error: 'OpenAI API key not configured',
-          details: 'Voice processing requires OpenAI API access. Please configure your API key.'
-        }, { status: 503 })
-      }
-
       try {
+        const openai = getOpenAIClient()
+        
         // Step 1: Transcribe audio using OpenAI Whisper
         const transcription = await openai.audio.transcriptions.create({
           file: audioFile,
@@ -87,6 +87,15 @@ Respond as if you ARE Earl, speaking in first person about your experiences, ski
 
       } catch (openaiError: any) {
         console.error('OpenAI API error:', openaiError)
+        
+        // Handle missing API key
+        if (openaiError.message === 'OpenAI API key not configured') {
+          return NextResponse.json({ 
+            error: 'OpenAI API key not configured',
+            details: 'Voice processing requires OpenAI API access. Please configure your API key.',
+            fallback: true
+          }, { status: 503 })
+        }
         
         // Handle specific OpenAI errors
         if (openaiError.status === 429) {
