@@ -2,27 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-// Add custom styles for sliders
-const sliderStyles = `
-  .slider::-webkit-slider-thumb {
-    appearance: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: #3b82f6;
-    cursor: pointer;
-    border: 2px solid #1e293b;
-  }
-  
-  .slider::-moz-range-thumb {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: #3b82f6;
-    cursor: pointer;
-    border: 2px solid #1e293b;
-  }
-`
+
 
 interface BrowserVoiceChatProps {
   onClose?: () => void
@@ -40,12 +20,6 @@ export default function BrowserVoiceChat({ onClose, className = '' }: BrowserVoi
   const [browserSupport, setBrowserSupport] = useState(false)
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([])
   const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null)
-  const [showVoiceSettings, setShowVoiceSettings] = useState(false)
-  const [voiceSettings, setVoiceSettings] = useState({
-    rate: 0.9,
-    pitch: 0.8,
-    volume: 1
-  })
   
   const recognitionRef = useRef<any>(null)
   const speechSynthesisRef = useRef<SpeechSynthesis | null>(null)
@@ -103,17 +77,12 @@ export default function BrowserVoiceChat({ onClose, className = '' }: BrowserVoi
         const voices = speechSynthesisRef.current?.getVoices() || []
         setAvailableVoices(voices)
         
-        // Auto-select a good default voice (prefer English, then male voices)
+        // Auto-select Microsoft Mark (English US) as default voice
         if (!selectedVoice && voices.length > 0) {
-          // Try to find a good male English voice
+          // Try to find Microsoft Mark specifically
           const preferredVoice = voices.find(voice => 
-            voice.lang.startsWith('en') && (
-              voice.name.toLowerCase().includes('male') ||
-              voice.name.toLowerCase().includes('david') ||
-              voice.name.toLowerCase().includes('alex') ||
-              voice.name.toLowerCase().includes('daniel')
-            )
-          ) || voices.find(voice => voice.lang.startsWith('en') && voice.name.toLowerCase().includes('guy')) ||
+            voice.name.toLowerCase().includes('mark') && voice.lang === 'en-US'
+          ) || voices.find(voice => voice.lang === 'en-US') ||
              voices.find(voice => voice.lang.startsWith('en')) ||
              voices[0]
              
@@ -199,10 +168,10 @@ export default function BrowserVoiceChat({ onClose, className = '' }: BrowserVoi
         utterance.voice = selectedVoice
       }
       
-      // Apply voice settings
-      utterance.rate = voiceSettings.rate
-      utterance.pitch = voiceSettings.pitch
-      utterance.volume = voiceSettings.volume
+      // Apply fixed voice settings optimized for Microsoft Mark
+      utterance.rate = 0.9
+      utterance.pitch = 0.8
+      utterance.volume = 1
       
       utterance.onstart = () => setIsSpeaking(true)
       utterance.onend = () => setIsSpeaking(false)
@@ -259,9 +228,7 @@ export default function BrowserVoiceChat({ onClose, className = '' }: BrowserVoi
   }
 
   return (
-    <>
-      <style>{sliderStyles}</style>
-      <div className={`flex flex-col h-full bg-gradient-to-br from-gray-900 to-black text-white ${className}`}>
+    <div className={`flex flex-col h-full bg-gradient-to-br from-gray-900 to-black text-white ${className}`}>
       {/* Header */}
       <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-700/50 bg-gradient-to-r from-green-900/20 to-blue-900/20">
         <div className="flex items-center space-x-3">
@@ -283,148 +250,19 @@ export default function BrowserVoiceChat({ onClose, className = '' }: BrowserVoi
           </div>
         </div>
         
-        <div className="flex items-center space-x-2">
-          {/* Voice Settings Button */}
+        {onClose && (
           <button
-            onClick={() => setShowVoiceSettings(!showVoiceSettings)}
+            onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
-            title="Voice Settings"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          
-          {onClose && (
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          )}
-        </div>
+        )}
       </div>
 
-      {/* Voice Settings Panel */}
-      {showVoiceSettings && (
-        <div className="bg-gray-800/90 border-b border-gray-700/50 p-4">
-          <div className="space-y-4">
-            {/* Voice Selection */}
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Voice ({availableVoices.length} available)
-              </label>
-              <select
-                value={selectedVoice?.name || ''}
-                onChange={(e) => {
-                  const voice = availableVoices.find(v => v.name === e.target.value)
-                  setSelectedVoice(voice || null)
-                }}
-                className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                {availableVoices.map((voice) => (
-                  <option key={voice.name} value={voice.name}>
-                    {voice.name} ({voice.lang})
-                  </option>
-                ))}
-              </select>
-              {selectedVoice && (
-                <p className="text-xs text-gray-400 mt-1">
-                  Selected: {selectedVoice.name} • {selectedVoice.lang}
-                </p>
-              )}
-            </div>
 
-            {/* Voice Controls */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {/* Speech Rate */}
-              <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Speed: {voiceSettings.rate.toFixed(1)}x
-                </label>
-                <input
-                  type="range"
-                  min="0.5"
-                  max="2"
-                  step="0.1"
-                  value={voiceSettings.rate}
-                  onChange={(e) => setVoiceSettings(prev => ({ ...prev, rate: parseFloat(e.target.value) }))}
-                  className="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
-                />
-              </div>
-
-              {/* Pitch */}
-              <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Pitch: {voiceSettings.pitch.toFixed(1)}
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="2"
-                  step="0.1"
-                  value={voiceSettings.pitch}
-                  onChange={(e) => setVoiceSettings(prev => ({ ...prev, pitch: parseFloat(e.target.value) }))}
-                  className="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
-                />
-              </div>
-
-              {/* Volume */}
-              <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Volume: {Math.round(voiceSettings.volume * 100)}%
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.1"
-                  value={voiceSettings.volume}
-                  onChange={(e) => setVoiceSettings(prev => ({ ...prev, volume: parseFloat(e.target.value) }))}
-                  className="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
-                />
-              </div>
-            </div>
-
-            {/* Test Voice Button */}
-            <div className="flex justify-between items-center">
-              <button
-                onClick={() => speakText("Hello! This is how I sound with the current voice settings.")}
-                disabled={isSpeaking}
-                className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              >
-                {isSpeaking ? 'Testing...' : 'Test Voice'}
-              </button>
-              
-              {/* Quick Presets */}
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => setVoiceSettings({ rate: 0.8, pitch: 0.7, volume: 1 })}
-                  className="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full transition-colors"
-                >
-                  Deep
-                </button>
-                <button
-                  onClick={() => setVoiceSettings({ rate: 0.9, pitch: 0.8, volume: 1 })}
-                  className="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full transition-colors"
-                >
-                  Normal
-                </button>
-                <button
-                  onClick={() => setVoiceSettings({ rate: 1.2, pitch: 1.2, volume: 1 })}
-                  className="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-full transition-colors"
-                >
-                  Bright
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Conversation History */}
       <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
@@ -537,7 +375,6 @@ export default function BrowserVoiceChat({ onClose, className = '' }: BrowserVoi
           </div>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   )
 }
