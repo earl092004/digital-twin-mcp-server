@@ -74,15 +74,16 @@ export async function queryDigitalTwin(question: string, conversationContext?: s
       data: question,
       topK: 3,
       includeMetadata: true,
+      includeData: true,
     })
 
     const results = await Promise.race([vectorQueryPromise, vectorTimeoutPromise]) as any
 
     if (!results || results.length === 0) {
-      console.log('❌ No vector results found, using basic Earl info')
+      console.log('❌ No vector results found, using enhanced Earl info with personal details')
       return {
         success: true,
-        response: "Hi! I'm Earl Sean Lawrence A. Pacho, a 4th year IT student at Saint Paul University Philippines. I'm passionate about backend development with Laravel and currently leading an AR Campus Navigation project. I completed a cultural exchange program in Malaysia and Singapore. Feel free to ask me more specific questions about my experience, projects, or technical skills!"
+        response: "Hi! I'm Earl Sean Lawrence A. Pacho, a 4th year IT student at Saint Paul University Philippines. For sports, I play badminton and frisbee. I'm a gamer who enjoys Valorant, Silkroad, Clash of Clans, and other MMORPG games like Terraria and Minecraft. I listen to K-pop, pop, country music, and old songs on Spotify. When I'm not coding, I browse the internet, use social media like Facebook, Instagram, and Twitter, and watch YouTube videos about game theories. I'm passionate about backend development with Laravel and completed a cultural exchange in Malaysia and Singapore!"
       }
     }
 
@@ -93,15 +94,39 @@ export async function queryDigitalTwin(question: string, conversationContext?: s
     for (const result of results as QueryResult[]) {
       const metadata = result.metadata || {}
       const title = metadata.title || 'Information'
-      // Try multiple possible content fields and log what we're getting
-      const content = metadata.content || metadata.text || metadata.data || String(metadata) || ''
       const score = result.score
 
+      // Debug: Log the entire result structure to understand what we're getting
       console.log(`🔹 Found: ${title} (Relevance: ${score.toFixed(3)})`)
-      console.log(`🔍 Raw metadata:`, JSON.stringify(metadata, null, 2))
+      console.log(`🔍 Full result structure:`, JSON.stringify(result, null, 2))
+      
+      let content = ''
+      
+      // Try different ways to extract content based on Upstash Vector response structure
+      const resultAny = result as any
+      if (resultAny.data && typeof resultAny.data === 'string') {
+        content = resultAny.data
+      } else if (resultAny.vector && resultAny.vector.data) {
+        content = resultAny.vector.data
+      } else if (metadata.content && typeof metadata.content === 'string') {
+        content = metadata.content
+      } else if (metadata.text && typeof metadata.text === 'string') {
+        content = metadata.text
+      } else {
+        // Search through all result properties for content
+        for (const [key, value] of Object.entries(result)) {
+          if (typeof value === 'string' && value.length > title.length && key !== 'id') {
+            content = value
+            console.log(`� Found content in field: ${key}`)
+            break
+          }
+        }
+      }
+
+      console.log(`📝 Extracted content: "${content}"`)
       console.log(`📝 Content length: ${content.length}`)
 
-      if (content && content.trim()) {
+      if (content && content.trim() && content.length > 10) {
         contextDocs.push(`${title}: ${content}`)
         context.push({
           title,
@@ -110,7 +135,14 @@ export async function queryDigitalTwin(question: string, conversationContext?: s
         })
         console.log(`✅ Added content: ${content.substring(0, 100)}...`)
       } else {
-        console.log(`❌ No content found for ${title}`)
+        console.log(`❌ No valid content extracted for ${title}`)
+        // Fallback: use title as minimal content
+        contextDocs.push(`${title}: [No detailed content available]`)
+        context.push({
+          title,
+          content: `[${title}]`,
+          relevance: score
+        })
       }
     }
 

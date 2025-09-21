@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import ChatUI from './components/ChatUI'
+import BrowserVoiceChat from './components/BrowserVoiceChat'
 
 export default function Home() {
   const [showChat, setShowChat] = useState(false)
+  const [showVoiceChat, setShowVoiceChat] = useState(false)
   const [showContact, setShowContact] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -38,18 +40,34 @@ export default function Home() {
             <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
               DIGI-EARL
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              {/* Text Chat Button */}
               <button
                 onClick={() => setShowChat(true)}
-                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-3 sm:px-6 py-2 sm:py-3 rounded-full transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-purple-500/25 hover:scale-105 text-sm sm:text-base"
+                data-text-chat
+                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-purple-500/25 hover:scale-105 text-xs sm:text-sm"
               >
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
-                <span className="font-medium hidden xs:inline">Chat with DIGI-EARL</span>
-                <span className="font-medium xs:hidden">Chat</span>
-                <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-ping"></div>
-                <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full"></div>
+                <span className="font-medium hidden sm:inline">Text Chat</span>
+                <span className="font-medium sm:hidden">Chat</span>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-400 rounded-full"></div>
+              </button>
+
+              {/* Voice Chat Button */}
+              <button
+                onClick={() => setShowVoiceChat(true)}
+                className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-cyan-500/25 hover:scale-105 text-xs sm:text-sm"
+              >
+                <svg className="w-4 h-4 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+                <span className="font-medium hidden sm:inline">Voice Chat</span>
+                <span className="font-medium sm:hidden">Voice</span>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full"></div>
               </button>
             </div>
           </div>
@@ -93,14 +111,26 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 px-4">
+                {/* Text Chat Button */}
                 <button 
                   onClick={() => setShowChat(true)}
                   className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-purple-500/25 hover:scale-105 transform w-full sm:w-auto"
                 >
-                  <span className="relative z-10">Start Conversation</span>
-                  <svg className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg className="inline-block mr-2 w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
+                  <span className="relative z-10">Text Chat</span>
+                </button>
+
+                {/* Voice Chat Button */}
+                <button 
+                  onClick={() => setShowVoiceChat(true)}
+                  className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-cyan-500/25 hover:scale-105 transform w-full sm:w-auto"
+                >
+                  <svg className="inline-block mr-2 w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                  <span className="relative z-10">Voice Chat</span>
                 </button>
                 
                 <button 
@@ -221,6 +251,30 @@ export default function Home() {
                   onSessionUpdate={(sessionId) => {
                     console.log('Session updated:', sessionId)
                   }}
+                  className="h-full rounded-xl sm:rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Voice Chat Modal */}
+      {showVoiceChat && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 overflow-hidden"
+          onClick={() => setShowVoiceChat(false)}
+        >
+          {/* Fixed Modal Container */}
+          <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 pointer-events-none">
+            <div 
+              className="relative w-full max-w-2xl h-[95vh] sm:h-[90vh] bg-gradient-to-br from-gray-900 to-black border border-gray-700/50 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden pointer-events-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Voice Chat UI */}
+              <div className="h-full overflow-hidden">
+                <BrowserVoiceChat 
+                  onClose={() => setShowVoiceChat(false)}
                   className="h-full rounded-xl sm:rounded-2xl"
                 />
               </div>

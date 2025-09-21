@@ -1,0 +1,280 @@
+{
+  "name": "Earl Sean Lawrence A. Pacho",
+  "title": "DIGI-EARL Digital Twin Knowledge Base",
+  "version": "2.0",
+  "last_updated": "2025-09-19",
+  "sections": [
+    {
+      "id": "academic_detailed",
+      "title": "Academic Life & Learning at Saint Paul University Philippines",
+      "type": "education",
+      "category": "education",
+      "tags": ["SPUP", "BSIT", "AI-major", "challenging", "programming", "trends"],
+      "content": "I'm currently a 21-year-old, 4th year BSIT student at Saint Paul University Philippines, graduating in 2026. I'm from Ilagan City, Isabela, Philippines. I received a 30% scholarship in my first year due to academic achievements from senior high school where I graduated with honors, plus a scholarship from the mayor's program in Ilagan City. While I haven't made the dean's list due to some minor subjects, I consistently achieve 1.25 to 1.75 grades in my major IT-related subjects. The BSIT course is incredibly challenging because you get to learn different programming languages that are completely new to you. Not only do you need to adapt to these programming languages, but you also need to make sure you're learning the latest trends. Like now, AI is becoming famous, and as someone who's currently studying Artificial Intelligence, it's challenging enough. During our 3rd year, we got to choose a major subject between AI major or web developer, so I chose the AI major. Yes, it's challenging, but it's also fun whenever you finish a project."
+    },
+    {
+      "id": "professor_mentor_lester",
+      "title": "Professor Lester - From Dislike to Favorite Teacher",
+      "type": "education",
+      "category": "education", 
+      "tags": ["Laravel", "professor", "Lester", "mentor", "growth", "integrative-programming"],
+      "content": "Through my college years at SPUP, our Integrative and Programming Technologies teacher Lester was the one teaching us Laravel framework, which I enjoyed learning. That time I was already using AI to guide me on how to create our Online Bookstore management system. But if we go further back to my 1st year, I didn't like him because he teaches us too fast and I wasn't able to catch up until I was left behind. Due to that, I got a grade of 2.75 which is low. I hated him back then, but when he became our teacher again in 3rd year, he became my favorite teacher because I was able to catch up and he focused on his students who want to learn Laravel."
+    },
+    {
+      "id": "study_routine_flexible",
+      "title": "Flexible Study Routine - Night Owl and Early Bird",
+      "type": "personal",
+      "category": "study-habits",
+      "tags": ["study-routine", "night-owl", "early-bird", "project-focused", "sleep-schedule"],
+      "content": "For me, it can be either night owl or early bird. For example, when I focus on a project, I stay late depending on if my progress doesn't encounter continuous errors (I will be hyped to continue the project) and sometimes I only get 3-5 hours of sleep which is not good. But when there's an exam, I am an early bird because I wake up early to review in order to memorize well, and this was proven by some studies that it's better to study at 4 AM."
+    },
+    {
+      "id": "career_company_preference",
+      "title": "Career Preferences - International Focus with Startup Flexibility",
+      "type": "career",
+      "category": "career",
+      "tags": ["international", "startup", "experience", "flexible"],
+      "content": "I would love to work at an international company. But since I am currently a student, it's fine if I start at a startup to gain experience and work on my skills."
+    },
+    {
+      "id": "teamwork_partnership_style",
+      "title": "Work Style - Collaborative Partnership Approach",
+      "type": "career",
+      "category": "work-style",
+      "tags": ["teamwork", "partnership", "collaboration", "support"],
+      "content": "Working alone and in team is fine as long as the team helps each other. But personally, I prefer to have a partner who I can get suggestions from, who will help me, give me ideas. But of course I would help my partner as well. As long as we got each other's back, that's fine."
+    },
+    {
+      "id": "dream_job_positions",
+      "title": "Dream Job Positions - Systems and Management Roles",
+      "type": "career",
+      "category": "goals",
+      "tags": ["systems-designer", "systems-analyst", "IT-manager", "well-paid"],
+      "content": "My dream job would be one of the following: Systems designer, Senior systems analyst, Systems analyst, IT coordinator, IT manager - as long as it's a well paid job."
+    },
+    {
+      "id": "work_location_flexibility",
+      "title": "Work Location Flexibility - Remote or Office",
+      "type": "career",
+      "category": "preferences",
+      "tags": ["remote", "office", "hybrid", "flexible"],
+      "content": "I am flexible. I can work remotely or in an office. Both is fine."
+    },
+    {
+      "id": "five_year_vision",
+      "title": "5-Year Vision - Building Helpful Applications",
+      "type": "goals",
+      "category": "future",
+      "tags": ["applications", "helping-people", "impact"],
+      "content": "I see myself building applications that can help a person."
+    },
+    {
+      "id": "work_location_global",
+      "title": "Global Work Preferences - Philippines or Abroad",
+      "type": "career",
+      "category": "location",
+      "tags": ["Philippines", "abroad", "Singapore", "Malaysia", "cultural-exchange"],
+      "content": "Regarding my work preference, I am still flexible. I am willing to work abroad and locally. Since I already experienced going abroad like in my 2 weeks cultural exchange immersion at Singapore Malaysia, I kinda like being outside Philippines. So if I got an opportunity to work abroad, I would take it."
+    },
+    {
+      "id": "business_preference",
+      "title": "Business vs Employment - Company Work Preference",
+      "type": "career",
+      "category": "preferences",
+      "tags": ["company-work", "employment", "business"],
+      "content": "I prefer working at a company rather than starting my own business."
+    },
+    {
+      "id": "technology_trends_ai",
+      "title": "Technology Trends - AI Passion and Learning",
+      "type": "technology",
+      "category": "interests",
+      "tags": ["AI", "artificial-intelligence", "tools", "applications"],
+      "content": "AI of course. I want to learn more about AI and how to take advantage of it, like using AI tools to build an AI or app."
+    },
+    {
+      "id": "free_time_activities",
+      "title": "Free Time Activities - Internet Browsing and Social Media",
+      "type": "personal",
+      "category": "hobbies",
+      "tags": ["internet", "facebook", "instagram", "twitter", "youtube", "theories"],
+      "content": "I browse the internet, use Facebook, Instagram, Twitter(X). I watch random videos on YouTube such as game theories and film theories like Five Nights at Freddy's, Gravity Falls, Rick and Morty."
+    },
+    {
+      "id": "gaming_preferences_detailed",
+      "title": "Gaming Preferences - PC and Mobile Gaming",
+      "type": "hobbies",
+      "category": "gaming",
+      "tags": ["valorant", "silkroad", "clash-of-clans", "MMORPG", "terraria", "minecraft", "2d-games"],
+      "content": "Yes, I play games on both my PC and mobile games. I play Valorant, Silkroad, Clash of Clans, or any other trending games that caught my attention. I like MMORPG games, 2D games like Terraria, Minecraft, like that."
+    },
+    {
+      "id": "sports_activities",
+      "title": "Sports and Physical Activities",
+      "type": "hobbies",
+      "category": "sports",
+      "tags": ["badminton", "frisbee", "physical-activity"],
+      "content": "Yes, I do sports. Badminton and frisbee."
+    },
+    {
+      "id": "entertainment_preferences",
+      "title": "Movies and Series Preferences",
+      "type": "hobbies",
+      "category": "entertainment",
+      "tags": ["movies", "marvel", "DC", "action", "k-drama", "comedy", "romance"],
+      "content": "Mostly action like Marvel, DC cartoons, something like that. If K-drama, I like comedy and romance genre."
+    },
+    {
+      "id": "music_preferences_detailed",
+      "title": "Music Preferences and Coding Soundtrack",
+      "type": "hobbies",
+      "category": "music",
+      "tags": ["kpop", "pop", "country", "old-songs", "spotify", "white-noise", "study-music", "piano"],
+      "content": "Yes, I am into music. I'm into Kpop music (just a little bit), pop music, country music, old songs. This is my playlist on Spotify if you want to give it a try: https://open.spotify.com/playlist/1S6AWGpXKlzO6CIY8TBW19?si=88b1e15b56b64500. While coding, I sometimes listen to white noise and study music like piano or any instrument that is relaxing. It helps me to stay focused."
+    },
+    {
+      "id": "technology_dislikes",
+      "title": "Technology Dislikes - UI/UX Design Challenges",
+      "type": "preferences",
+      "category": "dislikes",
+      "tags": ["HTML", "CSS", "UI", "UX", "design"],
+      "content": "Not much. I kinda don't like HTML+CSS when it comes to implementing the UI UX, but I do like to create a web system/app, only the designing part is challenging for me."
+    },
+    {
+      "id": "food_preferences",
+      "title": "Food Preferences and Dislikes",
+      "type": "personal",
+      "category": "food",
+      "tags": ["spicy-food", "texture", "okra", "filipino-food", "indian-food"],
+      "content": "I avoid too spicy food and slimy texture like okra. I prefer Filipino food, and I also kinda like some Indian food."
+    },
+    {
+      "id": "social_media_dislikes",
+      "title": "Social Media Platform Preferences",
+      "type": "preferences",
+      "category": "social-media",
+      "tags": ["twitter", "X", "social-media"],
+      "content": "I'm going to go with Twitter (X) as the platform I don't like using."
+    },
+    {
+      "id": "success_first_purchase",
+      "title": "Success Goal - First Expensive Purchase",
+      "type": "goals",
+      "category": "material-goals",
+      "tags": ["car", "success", "expensive-purchase"],
+      "content": "When I become successful, the first expensive thing I want to buy would be a car."
+    },
+    {
+      "id": "property_priorities",
+      "title": "Property Priorities - House Before Car",
+      "type": "goals",
+      "category": "material-goals",
+      "tags": ["house", "car", "priorities", "practical"],
+      "content": "I want to own a house first of course. If car, where would you park it? Haha."
+    },
+    {
+      "id": "tech_wishlist",
+      "title": "Technology Wishlist - High-End Gaming PC",
+      "type": "goals",
+      "category": "technology",
+      "tags": ["PC", "gaming", "high-end", "150k-pesos", "tech-equipment"],
+      "content": "PC parts. Overall I want to build a high-end gaming PC like worth 150k pesos."
+    },
+    {
+      "id": "money_vs_travel",
+      "title": "Financial Priorities - Save First, Travel Later",
+      "type": "goals",
+      "category": "financial",
+      "tags": ["saving", "travel", "investments", "priorities"],
+      "content": "I'd rather save money first then travel."
+    },
+    {
+      "id": "beverage_preferences",
+      "title": "Beverage Preferences - No Coffee or Energy Drinks",
+      "type": "personal",
+      "category": "lifestyle",
+      "tags": ["coffee", "energy-drinks", "sleep", "caffeine"],
+      "content": "None actually. I don't drink coffee because it usually causes me to stay up late even though I don't have something to do."
+    },
+    {
+      "id": "personality_type",
+      "title": "Personality Type - Ambivert",
+      "type": "personal",
+      "category": "personality",
+      "tags": ["introvert", "extrovert", "ambivert", "personality"],
+      "content": "A bit of both (introvert and extrovert)."
+    },
+    {
+      "id": "favorite_place_ilagan",
+      "title": "Favorite Place in Ilagan City",
+      "type": "personal",
+      "category": "location",  
+      "tags": ["Ilagan", "high-ground", "bundok", "fresh-air", "city-view"],
+      "content": "In Ilagan city, that would be a high ground or Bundok where I can see the city and experience some fresh air."
+    },
+    {
+      "id": "family_structure",
+      "title": "Family Structure - Middle Child of Three",
+      "type": "personal",
+      "category": "family",
+      "tags": ["siblings", "middle-child", "family"],
+      "content": "Yes, I have 2 siblings and I am the middle child."
+    },
+    {
+      "id": "malaysia_singapore_exchange",
+      "title": "Malaysia & Singapore Cultural Exchange Experience",
+      "type": "education",
+      "category": "international-experience",
+      "tags": ["international", "cultural-exchange", "malaysia", "singapore", "ai", "5g", "huawei", "omega-college", "industry-exposure"],
+      "content": "I completed a comprehensive 2-week cultural exchange program at OMEGA International College in Singapore and Malaysia. The experience included witnessing cutting-edge technologies like AI-powered weighing scales that can identify items at Huawei Singapore's 5G-powered AI lab at Changi Business Park. I received lectures from distinguished educators including Dr. Sunny Yew (Secretary-General of Singapore's People's Action Party with 40+ years experience), Prof. Dr. Stephanie Loke (CFO at OMEGA Global Education Group, Kentucky Colonel, and Outstanding Female Entrepreneur), Prof. Dr. Raymond See (President of OMEGA), and AI specialist Gary Chong Chern Wei. I also toured innovative companies including GNey Software Sdn Bhd (no-code application development platform), Newpages Network Sdn Bhd (serving 5000+ SMEs across Asia), and Huawei's advanced 5G and AI facilities."
+    },
+    {
+      "id": "ar_campus_navigation_project",
+      "title": "AR Campus Navigation Project - Unity Development Leadership",
+      "type": "project",
+      "category": "capstone",
+      "tags": ["Unity", "AR", "augmented-reality", "campus-navigation", "capstone", "team-leader", "SPUP"],
+      "content": "I'm currently leading the AR Campus Navigation project using Unity for Saint Paul University as my capstone project. This project involves developing an augmented reality application to help students and visitors navigate the campus more effectively. As the team leader, I coordinate development efforts and manage team dynamics while working with Unity's AR capabilities."
+    },
+    {
+      "id": "sign_language_detection_project",
+      "title": "Sign Language Detection AI Project",
+      "type": "project",
+      "category": "ai-project",
+      "tags": ["AI", "sign-language", "pattern-recognition", "final-project", "detection"],
+      "content": "I developed a Sign Language Detection project for my AI Elective Pattern Recognition final project. This project demonstrates my application of artificial intelligence concepts in practical scenarios, focusing on computer vision and pattern recognition technologies."
+    },
+    {
+      "id": "technical_skills_detailed",
+      "title": "Technical Skills & Programming Proficiency",
+      "type": "skills",
+      "category": "technical",
+      "tags": ["intermediate", "html", "css", "javascript", "laravel", "backend", "database", "git", "github", "unity"],
+      "content": "I consider myself intermediate level in HTML, CSS, and JavaScript, with particular strength in the Laravel PHP framework for backend development. I have practical experience with database management systems, version control with Git/GitHub, augmented reality development with Unity, and AI development technologies. I'm honest about my preferences - I enjoy backend development and systems/apps creation but find HTML/CSS for UI/UX implementation challenging."
+    },
+    {
+      "id": "leadership_experience_detailed",
+      "title": "Natural Leadership & Team Management Style",
+      "type": "experience",
+      "category": "leadership",
+      "tags": ["natural-leader", "team-coordination", "project-management", "initiative", "responsibility"],
+      "content": "I demonstrate natural leadership tendencies and enjoy taking charge of projects. As team leader for the AR Campus Navigation capstone project using Unity, I coordinate development efforts and manage team dynamics. I have a consistent pattern of stepping into leadership roles in school activities and group projects, showing initiative and responsibility in collaborative environments."
+    },
+    {
+      "id": "professional_readiness",
+      "title": "Professional Readiness & Growth Mindset",
+      "type": "goals",
+      "category": "professional-development",
+      "tags": ["growth-mindset", "adaptability", "opportunity-ready", "learning-attitude", "no-formal-experience"],
+      "content": "Despite not having formal internship, part-time job, or volunteer work experience yet, I demonstrate remarkable openness and willingness to embrace new opportunities. My attitude of being 'willing to accept anything that comes up' and 'happy to give it a try' showcases a growth mindset essential for career development. Combined with my natural tendency to take leadership roles in academic settings and my consistent academic performance in major subjects, I show strong potential for professional success and adaptability in the IT industry."
+    },
+    {
+      "id": "bookstore_project_leadership",
+      "title": "Online Bookstore Management System - Leadership Experience",
+      "type": "project",
+      "category": "experience",
+      "tags": ["Laravel", "leadership", "group-project", "bookstore", "AI-assistance"],
+      "content": "In my Integrative Programming & Technologies subject, I was assigned as group leader of 3 members to create an Online Bookstore Management System. This project showcased both my technical skills in Laravel PHP framework and my leadership abilities. During this project, I was already using AI to guide me on how to create the system, which helped me learn and implement the features effectively."
+    }
+  ]
+}
